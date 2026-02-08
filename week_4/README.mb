@@ -1,0 +1,46 @@
+workshop3_1.js 
+สร้างฟังก์ชันชื่อ operation รับพารามิตเตอร์ type, a, b 
+กำหนดเงื่อไข 
+ถ้า type = add เป็นบวก 
+ถ้า type = subtract เป็นลบ 
+ถ้า type = multiply เป็นคูณ
+ถ้า type = divide เป้นหาร
+ถ้าไม่ตรงอะไรเลยแสดงข้อความ Invalid operation type
+เรียกใช้ในไฟล์ index.js
+
+workshop3_2.js
+สร้างฟังก์ชันชื่อ fetchDataWithCallback รับพารามิตเตอร์ callback
+เรียกใช้คำสั่ง setTimeout ตั้งเวลา 2 วินาที
+เรียกใช้ฟังก์ fetchDataWithCallback เมื่อครบ 2 วินาทีจะแสดงผลรับว่า Callback result: Data from callback
+สร้างฟังก์ชันชื่อ fetchDataWithPromise return Promise 
+resolve() → สำเร็จ
+reject() → เกิดข้อผิดพลาด
+แล้วส่งข้อมูลกลับเมื่อทำงานเสร็จ
+เรียกใช้ฟังก์ fetchDataWithPromise
+.then() → ทำงานเมื่อ Promise สำเร็จ
+.catch() → ทำงานเมื่อเกิด error
+แสดงผลรับ Promise result: Data from promise
+
+workshop3_3.js
+สร้างฟังก์ชันชื่อ simulateAsyncOperation รับพารามิตเตอร์ timeout 
+return new Promise 
+ถ้า timeout น้อยกว่า 1000 ms
+ถือว่า ผิดเงื่อนไข
+เรียก reject() เพื่อส่ง error ออกไป
+ใช้คำสั่ง setTimeout เมื่อครบเวลาแล้ว เรียก resolve()
+ส่งข้อความกลับว่า ทำงานเสร็จในกี่ ms
+ใช้ async ทำให้สามารถใช้ await ได้ เรียกใช้ฟังก์ performAsyncTask
+await จะรอจน Promise เสร็จ ถ้า Promise ถูก resolve ค่าที่ส่งมาจะเก็บใน result แสดงผลว่า Success
+ถ้า Promise ถูก reject โปรแกรมจะกระโดดมาที่ catch แสดงข้อความ error
+ผ่านเงื่อนไข (>= 1000) รอ 1500 ms แสดงผล Success: Operation completed in 1500 ms
+ไม่ผ่านเงื่อนไข reject() ทันที เข้า catch แสดงผล Caught error
+
+workshop3_4.js
+สร้างฟังก์ชันชื่อ fetchDataFromServer1 return new Promise ใช้คำสั่ง setTimeout แสดงผล Data from Server 1 รอ 2 วินาที
+สร้างฟังก์ชันชื่อ fetchDataFromServer2 return new Promise ใช้คำสั่ง setTimeout แสดงผล Error from Server 2 รอ 1 วินาที
+สร้างฟังก์ชันชื่อ fetchDataFromServer3 return new Promise ใช้คำสั่ง setTimeout แสดงผล Data from Server 3 รอ 3 วินาที
+Promise.any() เรียก Server ทั้ง 3 พร้อมกัน อันไหน สำเร็จก่อน → เอาอันนั้น อันอื่นพังหรือช้า → ไม่สน
+.then()ทำงานเมื่อ มีอย่างน้อย 1 Server สำเร็จ result คือข้อมูลจาก Server ที่สำเร็จตัวแรก แสดงผลว่าได้ข้อมูลจาก Server ไหน
+.catch()จะทำงาน ก็ต่อเมื่อ Server ทั้งหมด ล้มเหลวหมดแสดงข้อความ error ถ้ามีอย่างน้อย 1 ตัวสำเร็จ → catch จะไม่ทำงาน
+Promise.allSettled() เรียก Server ทุกตัว รอให้ทุกคนทำงานเสร็จ แล้วรายงานผลกลับมาทั้งหมด
+.then(results => {}) results จะเป็น array แต่ละตัวบอกว่า fulfilled → สำเร็จ rejected → ล้มเหลว
