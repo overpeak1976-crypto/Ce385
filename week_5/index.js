@@ -1,5 +1,5 @@
-const express = require('express')
-const app = express();
+// const express = require('express')
+// const app = express();
 
 // app.get('/', (req, res) => {
 //     res.send('Hello Experess')
@@ -48,29 +48,29 @@ const app = express();
 // });
 
 
-const students = [
-    {id:1, name: "Nantawat"},
-    {id:2, name: "Kew"}
-]
-app.get('/api/students', (req,res) => {
-    res.send(students)
-})
+// const students = [
+//     {id:1, name: "Nantawat"},
+//     {id:2, name: "Kew"}
+// ]
+// app.get('/api/students', (req,res) => {
+//     res.send(students)
+// })
 
-app.get('/api/students/:id', (req, res) => {
-    //แปลงค่าพารามิเตอร์ id ให้เป็นตัวเลข
-    const id = parseInt(req.params.id);
-    //ค้นหานักเรียนตาม id
-    const student = students.find(s => s.id === id);
-    //ถ้าเจอนักเรียนจะส่งข้อมูลกลับ ถ้าไม่เจอจะส่ง error message
-    if (student) {
-        res.send(student);
-    }
-    else {
-        res.status(404).send("Error 404: Student not found");
-    }
-})
+// app.get('/api/students/:id', (req, res) => {
+//     //แปลงค่าพารามิเตอร์ id ให้เป็นตัวเลข
+//     const id = parseInt(req.params.id);
+//     //ค้นหานักเรียนตาม id
+//     const student = students.find(s => s.id === id);
+//     //ถ้าเจอนักเรียนจะส่งข้อมูลกลับ ถ้าไม่เจอจะส่ง error message
+//     if (student) {
+//         res.send(student);
+//     }
+//     else {
+//         res.status(404).send("Error 404: Student not found");
+//     }
+// })
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000')
-})
+// app.listen(3000, () => {
+//     console.log('Server is running on port 3000')
+// })
 
